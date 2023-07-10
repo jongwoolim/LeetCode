@@ -42,6 +42,6 @@ class Solution {
             map.put(depth, sum);
         }
         
-        return map.firstEntry().getValue(); 
+        return map.lastEntry().getValue(); 
     }
 }

@@ -16,32 +16,28 @@
 class Solution {
     public int deepestLeavesSum(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<>();
-        TreeMap<Integer, Integer> map = new TreeMap<>();
         queue.offer(root);
-        
+
+        int sum = 0;
         while(!queue.isEmpty()){
 
             int qSize = queue.size();
-            int depth = 1;
-            int sum = 0;
-            
+            sum = 0;
+
             for(int i=0; i< qSize; i++){
                 TreeNode visitedNode = queue.poll();
                 sum += visitedNode.val;
-                
+
                 if(visitedNode.left != null){
                     queue.offer(visitedNode.left);
                 }
-                
+
                 if(visitedNode.right != null){
                     queue.offer(visitedNode.right);
                 }
             }
-            
-            depth++;
-            map.put(depth, sum);
         }
-        
-        return map.lastEntry().getValue(); 
+
+        return sum;
     }
 }
